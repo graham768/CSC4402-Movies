@@ -45,12 +45,31 @@ create table Genome_scores
 	primary key(movieId, tagId)
 );
 
--- fix for genre table
--- load data local infile '../data/movies.csv' into table Movies fields terminated by ',';
+-- Takes first two columns and ignores genre
+load data local infile '../data/movies.csv'
+into table Movies 
+(column1, column2, @dummy)
+fields terminated by ','
+lines terminated by '\n';
 
-load data local infile '../data/ratings.csv' into table Ratings fields terminated by ',';
-load data local infile '../data/tags.csv' into table Tags fields terminated by ',';
-load data local infile '../data/genome-tags.csv' into table Genome_tags fields terminated by ',';
-load data local infile '../data/genome-scores.csv' into table Genome_scores fields terminated by ',';
+load data local infile '../data/ratings.csv' 
+into table Ratings
+fields terminated by ',' 
+lines terminated by '\n';
+
+load data local infile '../data/tags.csv' 
+into table Tags 
+fields terminated by ',' 
+lines terminated by '\n';
+
+load data local infile '../data/genome-tags.csv' 
+into table Genome_tags 
+fields terminated by ',' 
+lines terminated by '\n';
+
+load data local infile '../data/genome-scores.csv' 
+into table Genome_scores 
+fields terminated by ',' 
+lines terminated by '\n';
 
 
