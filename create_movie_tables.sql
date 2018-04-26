@@ -80,5 +80,5 @@ load data local infile './movie_data/genome-scores.csv'
 into table Genome_scores 
 fields terminated by ',' 
 lines terminated by '\n'
-ignore 2 lines;
+ignore 1 lines;
 
