@@ -55,7 +55,7 @@ ignore 1 lines
 load data local infile './movie_data/genres-normalized.csv' 
 into table Genres
 fields terminated by ',' 
-lines terminated by '\n'
+lines terminated by '\r\n'
 ignore 1 lines;
 
 load data local infile './movie_data/ratings.csv' 
