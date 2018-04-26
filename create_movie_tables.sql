@@ -17,7 +17,7 @@ create table Ratings
 (
 	userId integer, 
 	movieId integer,
-	rating decimal,
+	rating decimal(1,1),
 	primary key(userId, movieId)
 );
 
