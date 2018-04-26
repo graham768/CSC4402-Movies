@@ -4,7 +4,6 @@ create table Genres
 (
 	movieId integer, 
 	genre varchar(1000)
-	primary key(movieId, genre)
 );
 
 create table Movies
@@ -41,35 +40,45 @@ create table Genome_scores
 (
 	movieId integer, 
 	tagId integer, 
-	relevance decimal,
+	relevance decimal(5,5),
 	primary key(movieId, tagId)
 );
 
 -- Takes first two columns and ignores genre
-load data local infile '../data/movies.csv'
+load data local infile './movie_data/movies.csv'
 into table Movies 
-(column1, column2, @dummy)
 fields terminated by ','
-lines terminated by '\n';
+lines terminated by '\n'
+ignore 1 lines
+(movieId, title, @dummy);
 
-load data local infile '../data/ratings.csv' 
+load data local infile './movie_data/genres-normalized.csv' 
+into table Genres
+fields terminated by ',' 
+lines terminated by '\n'
+ignore 1 lines;
+
+load data local infile './movie_data/ratings.csv' 
 into table Ratings
 fields terminated by ',' 
-lines terminated by '\n';
+lines terminated by '\n'
+ignore 1 lines;
 
-load data local infile '../data/tags.csv' 
+load data local infile './movie_data/tags.csv' 
 into table Tags 
 fields terminated by ',' 
-lines terminated by '\n';
+lines terminated by '\n'
+ignore 1 lines;
 
-load data local infile '../data/genome-tags.csv' 
+load data local infile './movie_data/genome-tags.csv' 
 into table Genome_tags 
 fields terminated by ',' 
-lines terminated by '\n';
+lines terminated by '\n'
+ignore 1 lines;
 
-load data local infile '../data/genome-scores.csv' 
+load data local infile './movie_data/genome-scores.csv' 
 into table Genome_scores 
 fields terminated by ',' 
-lines terminated by '\n';
-
+lines terminated by '\n'
+ignore 2 lines;
 
